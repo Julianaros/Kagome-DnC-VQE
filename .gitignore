@@ -1,0 +1,9 @@
+# reference material (advisor's accepted paper + notebook: not for redistribution)
+Doc/
+# scratch / exploratory
+VQE/
+# python & jupyter noise
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.bak
