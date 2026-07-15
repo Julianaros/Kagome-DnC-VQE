@@ -5,7 +5,7 @@
 Sec. 4 of the paper scales VQE by splitting the lattice into subregions
 ("local VQE"), freezing the optimized sub-circuits, and re-joining them with a handful
 of junction $R_y(\theta)$ rotations ("global VQE", Fig. 4). This task repeats that
-strategy on the 19-site KAFH lattice of Task 1 **without breaking SU(2)**: every gate —
+strategy on the 19-site KAFH lattice of Task 1 without breaking SU(2): every gate —
 dimer preparations, local HVA layers, *and the junction gates* — is the Heisenberg /
 eSWAP gate $U_H(\theta)=e^{-i\theta(XX+YY+ZZ)/4}$, so $\langle S^2\rangle$ stays in the
 correct spin sector at every stage by construction ($J=1$ uniform, no Hamiltonian
@@ -16,7 +16,7 @@ calibration anywhere).
 * **Subregion 1** — sites 0–10 (11 sites, odd → doublet), 14 bonds, 5 dimers + spinon
   on site 10 (at the interface).
 * **Subregion 2** — sites 11–18 (8 sites, even → singlet), 10 bonds, perfect 4-dimer
-  cover — which turns out to be its **exact** ground state (Majumdar–Ghosh-like), so
+  cover — which turns out to be its exact ground state (Majumdar–Ghosh-like), so
   Step 1 for this region costs 0 gates and 0 parameters.
 * **Interface** — 6 bonds; the cut splits three corner-sharing triangles, and two of
   them share site 11 (several *coupled* junctions, not one).
@@ -27,16 +27,14 @@ calibration anywhere).
   L-BFGS-B + adjoint gradient); everything new lives in `kagome_dc.py`.
 - **Matrix-free global VQE** (`RecombinationVQE`): the frozen concatenated state is
   absorbed into $|\psi_0\rangle$ and $H|\psi\rangle$ is applied bond-by-bond — no
-  $2^{19}$ sparse operator is ever built (saves ~1.7 GB vs the Task-1 approach), and
+  $2^{19}$ sparse operator is ever built, and
   the adjoint gradient over the junction angles costs ~3 energy evaluations.
 - **The stationarity no-go, measured**: exact local ground states make the naive
   concatenation an exact critical point of the junction optimization
   ($\langle[A,H]\rangle=0$), so junction VQE *requires* random multi-starts — the
   notebook measures $\|\nabla E\|_{\theta=0}\sim10^{-16}$ and keeps the frozen state
   as a fallback candidate in every run.
-- **H_SEL**: the advisor's reduced junction Hamiltonian (notebook cells 22–23) adapted
-  to this cut — bonds within {junction site} ∪ {immediate neighbours}, giving 21 of 30
-  bonds (63 of 90 Pauli terms) — compared head-to-head against optimizing on the full H.
+- **H_SEL**: A reduced junction Hamiltonian was constructed for this cut by retaining the bonds within {junction site} ∪ {immediate neighbours}, corresponding to 21 of 30 bonds (63 of 90 Pauli terms). Its optimization performance was then compared directly with that of the full Hamiltonian.
 - **Metric discipline from the start** (Task-1 Sec. 4.6c lesson): fidelities are
   projections onto the full *degenerate ground manifold* (doublets everywhere), and
   every optimization is repeated with ≥5 seeds and reported mean ± std.
@@ -56,7 +54,7 @@ calibration anywhere).
   isomorphism + statevector qubit permutation (energy preserved to 1e-8). The junction
   VQE (4 cut bonds, H_SEL objective) runs matrix-free at 2²⁶. Key physics: two odd
   fragments are both doublets and SU(2) junctions cannot change total-spin sector
-  weights, so recombination must go through the **Clebsch–Gordan singlet combination**
+  weights, so recombination must go through the Clebsch–Gordan singlet combination
   of the local multiplets (`apply_s_minus` + `singlet_combination`) — a bare Sz=0
   product start would carry 50% S=1 weight forever.
 
