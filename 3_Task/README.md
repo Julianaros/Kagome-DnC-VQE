@@ -43,7 +43,7 @@ Key findings, in the order the notebook derives them:
   exception at 5.4×10⁻³).
 - **The NNN training Hamiltonian is self-defeating on this fragment** (§3): the
   dimer cover is the exact lowest S=0 state of H_NN + λ·H_NNN across the whole
-  window λ ∈ [−0.5, +0.7] (Majumdar–Ghosh stability), the ferromagnetic branch
+  window λ ∈ [−0.55, +0.70] (Majumdar–Ghosh stability), the ferromagnetic branch
   leaves the singlet sector, and the frustrated branch (λ ≥ +0.75) pays +8…+10
   locally while moving *away* from the target profile. The data-driven λ* (fit the
   NNN correlations to the ED) lands inside the window: calibrating the tool
