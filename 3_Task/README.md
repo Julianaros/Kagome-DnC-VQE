@@ -68,9 +68,14 @@ Key findings, in the order the notebook derives them:
   the interface energy (A: 31%) at the same bond-resolved rate as A (1.63):
   width scales the volume of the exchange without degrading its efficiency —
   exactly what fragment dressing could not do. Staged release (58p, warm from
-  A) gives only 1.567%, the diagnosis holding one last time. A guarded
-  user-run cell scales the wide schedule to 26 sites (18-bond H_SEL support,
-  `er26_wide.npz`).
+  A) gives only 1.567%, the diagnosis holding one last time. **Measured at 26
+  sites**: the same wide schedule (18-bond H_SEL support, 36p, 2 seeds) gains
+  −0.092 from the CG start — 28× the cut-only junctions — landing +0.0058
+  above the exact naive bound (0.015% vs 0.236% cut-only), with both seeds
+  still iteration-capped: the accumulated interface harvest (−0.146) pays
+  back subregion-1's entire +0.152 local VQE deficit. The central invariant is
+  audited at 2²⁶ (the run sets compute_s2=False for cost): ⟨S²⟩ of the winning
+  final state = −1×10⁻¹² — exact S=0, measured separately (`er26_s2.npz`).
 - **26 sites** (§4, measured): with two odd fragments the lattice admits a
   *global dimer cover with one singlet on a cut bond* — the "other way to
   preserve SU(2)": exact S=0 as a depth-1 product, no Clebsch–Gordan
@@ -88,7 +93,7 @@ Key findings, in the order the notebook derives them:
 | `ER_VQE_Kagome.ipynb` | The full study: target profile, stationarity theorem, configs A–D, λ sweep, traces, the trade, P3, 26 sites, scorecard, §6 interface-capacity improvement |
 | `kagome_er.py` | Programmatic NNN geometry, weighted training sims, fragment dressing/fit trainers, mixed-schedule multi-seed optimizer, config-C/D pipelines + persistence, interface dimer cover, drawings, smoke test |
 | `results/*.npz` | Persisted targets, sweeps and optima (auto-loaded; heavy cells resume) |
-| `figures/` | Lattice/NNN map, target profile, pre-analysis, traces, trade, predictor, endgame ladder, dressed circuit |
+| `figures/` | Lattice/NNN map, target profile, pre-analysis, traces, trade + bond-resolved rate bars, predictor, endgame ladder, dressed circuit, §6 params curve, winner bond-map/entropy overlays, 26q scaling ledger |
 
 Task-1/2 engines are imported from `../1_Task/` and `../2_Task/` (never copied);
 `kagome_er.py` puts them on `sys.path` itself. `python kagome_er.py` runs the
