@@ -53,11 +53,15 @@ Key findings, in the order the notebook derives them:
   but at 0.29–0.46 recovered per 1.0 of local energy paid (the ED's rate: 1.26).
   Across all nine configurations the final error tracks the energy paid with
   r = +0.994, and the profile RMS only with r = +0.593 (P3 reversed).
-- **26 sites** (§4): with two odd fragments the lattice admits a *global dimer
-  cover with one singlet on a cut bond* — the "other way to preserve SU(2)": exact
-  S=0 as a depth-1 product, no Clebsch–Gordan two-register preparation, at the
-  price of a higher (−39.0 vs −39.74) and symmetry-stationary start. The heavy
-  cell compares junction VQEs from both sectorizations plus a joint dressing.
+- **26 sites** (§4, measured): with two odd fragments the lattice admits a
+  *global dimer cover with one singlet on a cut bond* — the "other way to
+  preserve SU(2)": exact S=0 as a depth-1 product, no Clebsch–Gordan
+  two-register preparation, at the price of a higher (−39.0 vs −39.74) and
+  symmetry-stationary start. Measured: the cover start is an energetic trap —
+  the junction VQE finds *zero* descent (E = −39.0000 at both depths, both
+  seeds: the §2 theorem at 2²⁶) — while joint fragment dressing from the CG
+  side adds only −0.0009 beyond Task 2's −0.0033 junction gain. The second
+  sectorization is a *preparation* result, not an energy result.
 
 ## Repository layout
 
