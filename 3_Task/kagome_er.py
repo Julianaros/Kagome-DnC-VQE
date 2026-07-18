@@ -663,6 +663,66 @@ def load_c_records(path):
 
 
 # ==========================================================================
+# 7b. Interface-capacity schedules (Task-3 Sec. 6: the measured lever)
+# ==========================================================================
+# The Sec. 1-5 diagnosis locates the DnC error budget at the interface: the
+# 24-parameter cut-bond junctions rebuild ~24% of the cut entanglement and run
+# at a better marginal rate than the ED (1.63 vs 1.26) but move little energy.
+# These schedules widen/deepen the junction stage instead of preprocessing the
+# fragment — the same spreading mechanism, applied where the books say it pays.
+
+def wide_junction_schedule(reps, per_bond=True, edges_full=None,
+                           interface_edges=None):
+    """
+    'Plaquette' junction layers: one layer applies a Heisenberg gate on EVERY
+    bond of the H_SEL support (the 6 cut bonds first, then the intra bonds
+    adjacent to the junction sites — 21 bonds at the 19-site partition). This
+    hands the junction stage the same intra-near-cut bonds the ED uses to pay
+    its trade, while subregion cores stay frozen. n_params = 21*reps
+    (per_bond) or reps. Returns (sched, n_params, bonds).
+    """
+    if interface_edges is None:
+        interface_edges = dc.INTERFACE_EDGES
+    sel = dc.build_h_sel(edges_full, interface_edges)
+    ifc = [tuple(sorted(e)) for e in interface_edges]
+    bonds = ifc + [e for e in sel if e not in set(ifc)]
+    m = len(bonds)
+    sched = [(i, j, r * m + k if per_bond else r)
+             for r in range(reps) for k, (i, j) in enumerate(bonds)]
+    return sched, (reps * m if per_bond else reps), bonds
+
+
+def full_release_schedule(reps_frag, reps_ifc, per_bond=True):
+    """
+    Staged-release endgame: ONE schedule over the bare covers
+    |dimers_sub1(spinon@0)> (x) |dimers_sub2> that re-applies (1) subregion 1's
+    reps=1 local layer (14 gates, its Task-2 exact-local structure), (2)
+    `reps_frag` fragment-2 dressing layers, (3) `reps_ifc` junction layers —
+    with ALL parameters free. Warm-started from the frozen Task-3 optima it
+    reproduces the config-A state exactly at x = [x1_alt, 0…, x_junctions]
+    (asserted in the Sec.-6 cells), so any decrease is a true improvement of
+    the same circuit family. Returns (sched, n_params, slices) with
+    slices = dict(sub1=…, frag=…, ifc=…) index ranges into x.
+    """
+    s1 = [tuple(e) for e in dc.SUB1_EDGES]
+    frag = [tuple(e) for e in dc.SUB2_EDGES]
+    ifc = [tuple(e) for e in dc.INTERFACE_EDGES]
+    sched = [(i, j, k) for k, (i, j) in enumerate(s1)]
+    n1 = len(s1)
+    for r in range(reps_frag):
+        for k, (i, j) in enumerate(frag):
+            sched.append((i, j, n1 + r * len(frag) + k))
+    nf = n1 + reps_frag * len(frag)
+    m = len(ifc)
+    for r in range(reps_ifc):
+        for k, (i, j) in enumerate(ifc):
+            sched.append((i, j, nf + (r * m + k if per_bond else r)))
+    npar = nf + (reps_ifc * m if per_bond else reps_ifc)
+    slices = dict(sub1=slice(0, n1), frag=slice(n1, nf), ifc=slice(nf, npar))
+    return sched, npar, slices
+
+
+# ==========================================================================
 # 8. The alternative SU(2) sectorization (26 sites): a dimer ON the cut
 # ==========================================================================
 # When BOTH fragments are odd (doublet x doublet, e.g. the 26-site chain =

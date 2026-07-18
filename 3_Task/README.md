@@ -50,9 +50,27 @@ Key findings, in the order the notebook derives them:
   disables the tool.
 - **The advisor's "spreading" mechanism is real but below break-even** (§3.4):
   dressed starts do let the junctions harvest more interface energy (−0.67 → −1.95),
-  but at 0.29–0.46 recovered per 1.0 of local energy paid (the ED's rate: 1.26).
-  Across all nine configurations the final error tracks the energy paid with
-  r = +0.994, and the profile RMS only with r = +0.593 (P3 reversed).
+  but at a losing rate under both accountings (same ×4 convention, total
+  energies): stage-based, 0.29–0.46 extra recovered per 1.0 of dressing cost
+  pre-paid; bond-resolved (the ED's own books, |E_ifc|/intra-excess of the
+  final state), 0.64–0.71 (D) and 0.13–0.17 (C⁺) against break-even at 1 and
+  the ED's 1.26 — while junctions-only runs at 1.63, above the ED's marginal
+  rate: its problem is volume, not efficiency. Across all nine configurations
+  the final error tracks the energy paid with r = +0.994, and the profile RMS
+  only with r = +0.593 (P3 reversed).
+- **§6 — from diagnosis to improvement (the positive result):** investing the
+  capacity at the interface instead of the fragment breaks the floor. Depth
+  alone (cut bonds, reps 5–6): 1.547% / 1.470%. **Width wins**: "plaquette"
+  junction layers over the H_SEL support (6 cut bonds + 15 adjacent intra
+  bonds, 21 per layer) reach 1.221% (42p), 1.002% (63p) and **0.938% (84p,
+  converged)** — closing on the monolithic 0.80% @ 120p with both locals
+  frozen. The winner rebuilds 37% of the cut entanglement (A: 24%) and 41% of
+  the interface energy (A: 31%) at the same bond-resolved rate as A (1.63):
+  width scales the volume of the exchange without degrading its efficiency —
+  exactly what fragment dressing could not do. Staged release (58p, warm from
+  A) gives only 1.567%, the diagnosis holding one last time. A guarded
+  user-run cell scales the wide schedule to 26 sites (18-bond H_SEL support,
+  `er26_wide.npz`).
 - **26 sites** (§4, measured): with two odd fragments the lattice admits a
   *global dimer cover with one singlet on a cut bond* — the "other way to
   preserve SU(2)": exact S=0 as a depth-1 product, no Clebsch–Gordan
@@ -67,7 +85,7 @@ Key findings, in the order the notebook derives them:
 
 | Path | Contents |
 |---|---|
-| `ER_VQE_Kagome.ipynb` | The full study: target profile, stationarity theorem, configs A–D, λ sweep, traces, the trade, P3, 26 sites, scorecard |
+| `ER_VQE_Kagome.ipynb` | The full study: target profile, stationarity theorem, configs A–D, λ sweep, traces, the trade, P3, 26 sites, scorecard, §6 interface-capacity improvement |
 | `kagome_er.py` | Programmatic NNN geometry, weighted training sims, fragment dressing/fit trainers, mixed-schedule multi-seed optimizer, config-C/D pipelines + persistence, interface dimer cover, drawings, smoke test |
 | `results/*.npz` | Persisted targets, sweeps and optima (auto-loaded; heavy cells resume) |
 | `figures/` | Lattice/NNN map, target profile, pre-analysis, traces, trade, predictor, endgame ladder, dressed circuit |
