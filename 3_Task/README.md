@@ -4,7 +4,7 @@
 
 Task 2 ended with a measured interface-expressivity floor: with exact local states
 and 24 SU(2)-preserving junction parameters, the divide-and-conquer VQE reaches
-1.64% and stops. The advisor's reply set Task 3 (verbatim):
+1.64% and stops.
 
 > (i) "Use HVA to convert dimers to the spin-liquid like state for the lower
 > fragment (fragment-2) and then recombine. I am sure the combination will be
@@ -13,17 +13,17 @@ and 24 SU(2)-preserving junction parameters, the divide-and-conquer VQE reaches
 > instead adding terms of next nearest neighbours (NNN) terms and you will see the
 > non-local correlations will bring us closer to exact gs_energy."
 
-The working hypothesis — *matching the fragments' correlation profiles before
-joining makes the recombination seamless* — was registered as a three-prediction
+The working hypothesis, *matching the fragments' correlation profiles before
+joining makes the recombination seamless*  was registered as a three-prediction
 scorecard (P1 stationarity broken, P2 floor pierced, P3 profile-RMS predicts the
-final error) before any optimization ran. **All three came back refuted, each with
-its mechanism located** — see §5 of the notebook.
+final error) before any optimization ran. *All three came back refuted, each with
+its mechanism located*. See §5 of the notebook.
 
 ## What was measured (19 sites)
 
 | config | fragment-2 preparation | best error | verdict |
 |---|---|---|---|
-| A | bare dimers (exact local ground; Task-2 §9.1, reused) | **1.638%** | the bar |
+| A | bare dimers (exact local ground; Task-2 §9.1, reused) | *1.638%* | the bar |
 | B | HVA layers optimized **jointly** with the junctions (34/44p) | 1.624% | = A within seed scatter (mean 2.04 ± 0.42%) |
 | C | pre-trained vs H_NN + λ·H_NNN, frozen (λ sweep) | 1.788% (identity) / 27–34% (λ ≥ 0.75) | the tool self-disables |
 | D | dressed by direct correlation fit to the ED target (rms 0.015–0.028) | 6.74% | profile ≠ entanglement |
@@ -38,9 +38,9 @@ Key findings, in the order the notebook derives them:
 - **A stationarity theorem** (§2): the zero gradient at the identity junction is
   protected by SU(2) symmetry (Wigner–Eckart), not by local optimality — *any*
   product of S²-pure fragments is a stationary point of SU(2)-preserving junction
-  gates, so no Heisenberg-gate dressing can break it (measured ≤ 2×10⁻¹⁵ on every
-  dressed start; the entangled 26-site CG start, not a product, is the one
-  exception at 5.4×10⁻³).
+  gates, so no Heisenberg-gate dressing can break it (measured at the 10⁻¹⁵
+  level on every dressed start; the entangled 26-site CG start, not a product,
+  is the one exception at 5.4×10⁻³).
 - **The NNN training Hamiltonian is self-defeating on this fragment** (§3): the
   dimer cover is the exact lowest S=0 state of H_NN + λ·H_NNN across the whole
   window λ ∈ [−0.55, +0.70] (Majumdar–Ghosh stability), the ferromagnetic branch
@@ -104,8 +104,4 @@ preservation, cover-state prep, persistence round trips).
 
 Same environment as Tasks 1–2 (`qiskit>=2.0`, `scipy`, `numpy`, `networkx`,
 `matplotlib` + `pylatexenc`). Deterministic (fixed seeds). With `results/`
-populated (this repo state) a **Run All takes minutes** except the §4 26-qubit
-cell; recomputing §1–3 from scratch takes ≈ 3.5–4.5 h (the guarded cells save
-incrementally and resume). The §4 run cell is gated: automated executions set
-`ER_SKIP_26Q`, so only running it interactively computes (~1.5–2.5 h, peak < 4.5 GB
-with the Task-2 blocked kernels; it asserts ≥ 4.5 GB free before starting).
+populated (this repo state) 
