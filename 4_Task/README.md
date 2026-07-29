@@ -57,15 +57,25 @@ machine precision).
   cover ⟹ 2T ≤ N. Kagome bulk: T = 2N/3 ⟹ 2T = 4N/3 > N, impossible at any size;
   19-site cluster: T = 10, 0/3¹⁰ covers, E₀ = −29.146 > −30 = −3T. The insertion
   preserves coverability; re-embedding into kagome destroys it.
+- **Addendum (§10).** No duplication to correct: the four hub
+  bonds are *partitioned* (each has exactly one image; the pairs (0-1)/(0'-1) etc.
+  never coexist as bonds), the dummy triangle is one effective spin-½ on the manifold
+  (P S²_B P = ¾P), and the "copy" pairing is the mirrored one under σ. Individual
+  bond energies are *not* manifold invariants (each sweeps [−3,+1]); only triangle
+  sums are — the combinable object. No constraint is needed on the exact manifold;
+  variationally the guard is one scalar via the exact split
+  (E_A+E_C+6) = (⟨H⟩+9) − (E_B+3): enforce/monitor E_B = −3. Duplicated-bond
+  variants (0 and 0' both keeping all four hub bonds) are measured to break
+  everything: no covers, no saturation, E_A+E_C ≠ −6.
 
 ## Repository layout
 
 | Path | Contents |
 |---|---|
-| `Dummy_Triangle_KAFH.ipynb` | The full study: clusters, bound vs saturation, Lemmas 1–2, Theorem 1 + corollary, σ symmetry, the 6↔8 map (teleportation table, kernel, no-local-insertion), Δ-chain/ring scan, kagome obstruction, paper-ready summary (§9), referee cell |
+| `Dummy_Triangle_KAFH.ipynb` | The full study: clusters, bound vs saturation, Lemmas 1–2, Theorem 1 + corollary, σ symmetry, the 6↔8 map (teleportation table, kernel, no-local-insertion), Δ-chain/ring scan, kagome obstruction, paper-ready summary (§9), addendum (§10: bond partition vs duplication, invariant granularity, duplicated-bond variants, the exact error split), referee cell |
 | `kagome_delta.py` | Task-4 engine: Δ-chain/ring builders, dense + Sz-sector-exact ground manifolds, cover combinatorics, permutation symmetries, singlet-absorption check, contraction/lift maps, triplet-kink closed forms, chain scan, persistence, smoke test |
 | `results/*.npz` | Manifolds, map structure, chain scan, kagome check (auto-loaded) |
-| `figures/` | Clusters, the 7 covers, kernel doublet bond map, Δ-chain ledger |
+| `figures/` | Clusters, the 7 covers, kernel doublet bond map, Δ-chain ledger, bond bookkeeping (invariance + drift) |
 
 Task-1/2/3 engines are imported from `../1_Task/`, `../2_Task/`, `../3_Task/` (never
 copied); `kagome_delta.py` puts them on `sys.path` itself. `python kagome_delta.py`
