@@ -26,8 +26,8 @@ Contents
   4. Symmetry operators: qubit permutations, parity splitting of a manifold
   5. The singlet-absorption operator identity (Lemma 1 of the write-up)
   6. The 6<->8 map machinery: dummy contraction R (singlet teleportation),
-     its manifold restriction r = V_orig† R V_mod, and the *local* insertion
-     nullspace test (does any J: C² -> C⁸ on site 0 alone lift GS -> GS?)
+     its manifold restriction r = V_orig† R V_mod, and the local insertion
+     nullspace test (does any J: C^2 -> C^8 on site 0 alone lift GS -> GS?)
   7. Delta-chain scan (open chains and rings) for the E0 = -3·n_tri law
   8. Persistence helpers + smoke test
 
