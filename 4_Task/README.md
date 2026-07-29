@@ -10,7 +10,7 @@ refute:
 > (1) The optimal dimer arrangement guarantees that a dimer with spin 0 and a dimer
 > with spin 0' are mutually exclusive.
 > (2) The spin-liquid state and the gs_energy can be reconstructed accurately from
-> the bond energies of (0,1,2) and (0',22,24) — at bottom, 0' is a *variational
+> the bond energies of (0,1,2) and (0',22,24), at bottom, 0' is a *variational
 > copy* of 0 and vice versa.
 
 **Both claims are TRUE and proved by construction**, with (1) functioning as the
@@ -29,15 +29,15 @@ machine precision).
   (pigeonhole: all three dummy bonds touch {0,0'}); conversely exclusion ⟹
   extendable (7 = 4·1 + 1·3): **exclusion ≡ solvability**.
 - **Theorem 1 (= claim 2, energy).** E₀ = −9, degeneracy 8, and the manifold is
-  frustration-free in the strong sense P H_△ P = −3P for A, B, C **despite
-  max|[S²_A,S²_B]| = 2** (bound + cover witness + zero variance at the floor).
+  frustration-free in the strong sense P H_△ P = −3P for A, B, C *despite
+  max|[S²_A,S²_B]| = 2* (bound + cover witness + zero variance at the floor).
   Corollary: P(H_A+H_C)P = −6P — the bond energies of (0,1,2) and (0',22,24) alone
   reconstruct E₀(original) = −6 exactly on *every* modified ground state.
 - **Proposition 3 (copy, symmetry half).** σ = (0 0')(1 22)(2 24) is an exact
   automorphism, [P_σ,H] = 0; manifold splits 4 even ⊕ 4 odd (original: 4 ⊕ 2);
   mirrored observables agree exactly on σ-eigenstates.
 - **Theorem 4 (copy, map half).** The singlet contraction R = ⟨s|₁₃,₀′ is strictly
-  local, SU(2)-equivariant, and maps the 8-dim manifold **onto** the 6-dim original
+  local, SU(2)-equivariant, and maps the 8-dim manifold onto the 6-dim original
   one by *singlet teleportation on covers* (coefficient 1 when the dummy dimer is
   (13,0'), else ±½ with the spinon pulled back out of the dummy). Closed-form kernel:
   s(1,2) ⊗ s(22,24) ⊗ [t(13,0') ⊗ σ₀] — the doublet with the dummy pair in a
@@ -51,8 +51,8 @@ machine precision).
 - **Theorem 5 (chains).** The clusters are open Δ-(sawtooth) chains (Nakamura–Kubo /
   Sen–Shastry–Walstedt–Cava 1996). For n = 1..7 (asserted): E₀ = −3n, deg = 2(n+1),
   2n+1 covers spanning the full Sz = +½ sector. Each insertion: ΔE₀ = −3, one extra
-  kink slot. Rings still saturate (deg 2, 2 covers): **coverability, not acyclicity,
-  decides**.
+  kink slot. Rings still saturate (deg 2, 2 covers): coverability, not acyclicity,
+  decides.
 - **Proposition 6 (limit).** The witness needs a disjoint one-dimer-per-triangle
   cover ⟹ 2T ≤ N. Kagome bulk: T = 2N/3 ⟹ 2T = 4N/3 > N, impossible at any size;
   19-site cluster: T = 10, 0/3¹⁰ covers, E₀ = −29.146 > −30 = −3T. The insertion
@@ -83,4 +83,3 @@ spectrum floor).
 Same environment as Tasks 1–3 (`qiskit>=2.0`, `scipy`, `numpy`, `matplotlib`).
 Deterministic (fixed seeds). With `results/` populated (this repo state) the notebook
 re-runs in ~1 minute; from scratch the only nontrivial cell is the chain scan (~1 min).
-The paper-ready formal summary is §9 of the notebook.
