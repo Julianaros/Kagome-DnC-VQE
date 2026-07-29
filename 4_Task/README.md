@@ -2,8 +2,8 @@
 
 ## The brief
 
-Advisor's assignment (toward the next article). Original network: two corner-sharing
-triangles (0,1,2)–(0,22,24). Modified network: a **dummy triangle** inserted at the
+Original network: two corner-sharing
+triangles (0,1,2)–(0,22,24). Modified network: a *dummy triangle* inserted at the
 shared corner — (0,1,2)–(0,13,0')–(0',22,24), site 13 new, 0' duplicating 0. Prove or
 refute:
 
