@@ -28,7 +28,7 @@ kagome cluster of Tasks 1–3 and asks for a spin-liquid-like state on the black
   a₃ = E₀(H₁₉ ∖ cut) and the design rule; Prop. 7, the five embeddings are one
   graph, so the insertion is a readout choice; the equal-parameter head-to-head;
   Lemma J, the swap identity and Prop. 9, which close all three routes to a
-  *preparable* good state — junction circuits act on the projected survivor as a scalar, fragment teleportation returns the product bound exactly, and minimizing ⟨H₂₅⟩ is anti-ordered with the black readout; the 1-bit-vs-3.15-bit discussion; summary with the five-task arc, the (now much narrower) open question, and a reconciliation table; and a 36-item referee cell.
+  *preparable* good state — junction circuits act on the projected survivor as a scalar, fragment teleportation returns the product bound exactly, and minimizing ⟨H₂₅⟩ is anti-ordered with the black readout; the 1-bit-vs-3.15-bit discussion; summary with the five-task arc, the (now much narrower) open question, and a reconciliation table; **Prop. 10** and the advisor's product objective measured (the pair bond *is* the projection probability, P_s = (1 − ⟨h_pair⟩)/4, so the triangle energy is the wrong knob and E_△ = −9 is degenerate between p = 1 and p = 1/64, while the λ-scan of the repaired linear form is monotone but costs ≈ 0.004 of probability per point of energy with zero doublet weight throughout); and a 43-item referee cell.
 - [`kagome_trade.py`](kagome_trade.py) — the Task-5 engine (imports Tasks 1–4):   insertion geometry and the exhaustive triplet scan, depth-0 baselines,
   cut accounting, matrix-free black observables on 25-qubit states (⟨H₁₉⟩,
   Gram-spectrum purity and entropy, collective ⟨S²_black⟩, doublet weight), Bell-pair projections and the trade curve, the general forms of both theorems
@@ -36,8 +36,13 @@ kagome cluster of Tasks 1–3 and asks for a spin-liquid-like state on the black
   `su2_equivariance_residual`), exact rational Bell arithmetic (`exact_bell_table`, rational kernel projectors over ℚ), an S^z-sector Lanczos solver for H₂₅ (dim 5,200,300, matrix-free matvec), product embeddings, the open-path tools (`swap_state`, `lemma_j_check` — the per-triangle Schur scalar of any SU(2)-preserving junction circuit), and a smoke test (`python kagome_trade.py`) that re-asserts every headline number.
 - `results/*.npz` — persisted artifacts (auto-loaded by the notebook): `ed25.npz`,
   `ed25_2_11_12.npz`, `trade_*.npz`, `vqe25_junction_*.npz`, `vqe25_h25_*.npz`,
-  `open_path_probes.npz`, `h25_readings.npz`.
-- `figures/` — the six notebook figures (project palette, greyscale-safe markers).
+  `open_path_probes.npz`, `h25_readings.npz`, `product_objective.npz`,
+  `lambda_scan.npz`.
+- `figures/` — the seven notebook figures (project palette, greyscale-safe markers).
+- [`email_draft_ahsan.md`](email_draft_ahsan.md), [`email_reply_ahsan.md`](email_reply_ahsan.md)
+  — the correspondence that drove §11: the summary sent to the advisor, and the reply to
+  his counter-proposal (minimise the product of the two energies) with the measured
+  λ-front.
 
 ## Conventions
 
